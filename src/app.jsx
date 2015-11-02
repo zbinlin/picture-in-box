@@ -9,10 +9,10 @@ import PictureViewer from "./picture-viewer";
 export default class App extends Component {
     render() {
         return (
-            <NOOP>
-                <PictureGenerator />
+            <div>
+                <PictureGenerator {...this.props} />
                 <PictureViewer />
-            </NOOP>
+            </div>
         );
     }
 }

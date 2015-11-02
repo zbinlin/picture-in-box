@@ -2,4 +2,4 @@
 
 import React, { Component } from "react";
 
-export default props => <div>{props.chilren}</div>;
+export default props => <div>{props.children}</div>;
