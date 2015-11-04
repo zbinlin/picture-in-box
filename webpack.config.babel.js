@@ -1,6 +1,7 @@
 "ues strict";
 
 import path from "path";
+import autoprefixer from "autoprefixer";
 
 module.exports = {
     entry: [
@@ -17,15 +18,16 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules|dist/,
-                loaders: ["react-hot", "babel?cacheDirectory&presets[]=react&babelrc=false"]
+                loaders: ["react-hot", "babel?cacheDirectory&presets[]=react"]
             },
             {
                 test: /\.s[ac]ss$/,
                 exclude: /node_modules|dist/,
-                loaders: ["style", "css?modules&sourceMap", "sass?sourceMap"]
+                loaders: ["style", "css?modules&sourceMap", "postcss", "sass?sourceMap"]
             }
         ]
     },
+    postcss: [ autoprefixer({ browsers: ["last 4 versions"] }) ],
     resolve: {
         extensions: ["", ".webpack.js", ".web.js", ".js", ".jsx"]
     }

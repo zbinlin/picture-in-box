@@ -1,6 +1,8 @@
-.viewer {
-    width: 500px;
-    height: 200px;
-    background: yellow;
+.root {
+}
+.root {
     margin: 0 auto;
+    > div {
+        float: left;
+    }
 }
