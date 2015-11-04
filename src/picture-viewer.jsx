@@ -9,13 +9,13 @@ import styles from "./picture-viewer.scss";
 
 export default class PictureViewer extends Component {
     shouldComponentUpdate(nextProps, nextState) {
-        if (this._holdUpdate) {
+        if (this._tid) {
             return false;
         } else {
-            this._holdUpdate = true;
-            setTimeout(() => {
-                this._holdUpdate = false;
-            }, 2000);
+            clearTimeout(this._tid);
+            this._tid = setTimeout(() => {
+                this._tid = 0;
+            }, 300);
             return true;
         }
     }
@@ -29,7 +29,16 @@ export default class PictureViewer extends Component {
             return item.map((item, idx, arr) => {
                 let caph = idx == arr.length - 1 ? 0 : props.cap;
                 key += "-" + idx;
-                return <div key={key} style={ {background: `rgb(${[...item.bg].join(",")})`, width: item.width, height: item.height, marginRight: caph, marginBottom: capv} }></div>
+                let styl = {
+                    background: `rgb(${[...item.bg].join(",")})`,
+                    width: item.width,
+                    height: item.height,
+                    marginRight: caph,
+                    marginBottom: capv
+                };
+                return <div key={key} data-original-width={item.originalWidth}
+                            data-original-height={item.originalHeight}
+                            style={styl}></div>
             });
         }).reduce((arr, curr) => {
             return arr.concat(curr);

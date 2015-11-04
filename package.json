@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "./node_modules/.bin/webpack -c webpack.config.babel.js",
+    "webpack": "./node_modules/.bin/webpack",
     "serve": "./node_modules/.bin/webpack-dev-server --content-base dist/ --inline --hot"
   },
   "keywords": [],

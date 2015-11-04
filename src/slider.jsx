@@ -9,7 +9,10 @@ let cx = classNames.bind(styles);
 
 class Slider extends Component {
     onChange(evt) {
-        this.props.onChange(evt.target.value);
+        let value = evt.target.value;
+        if (this.props.value != value) {
+            this.props.onChange(value);
+        }
     }
 
     render() {
